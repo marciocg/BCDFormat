@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.marciocg</groupId>
-    <artifactId>bcdformat</artifactId>
+    <artifactId>BCDFormat</artifactId>
     <version>0.3</version>
 
     <name>BCDFormat</name>
