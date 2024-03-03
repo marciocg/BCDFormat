@@ -30,8 +30,9 @@ public final class BCDFormat {
      * 
      * @param arg Data as hexadecimal characters
      * @return byte[] array of BCD encoded data
+     * @throws IllegalArgumentException for illegal hexadecimal characters on {@link String} argument passed
      */
-    public static byte[] fromStringToBCDByteArray(String arg) {
+    public static byte[] fromStringToBCDByteArray(String arg) throws IllegalArgumentException {
         int i = 0;
         int p = 0;
         byte bcd = 0;
