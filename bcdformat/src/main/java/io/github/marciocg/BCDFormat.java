@@ -1,27 +1,21 @@
 package io.github.marciocg;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-
-// https://stackoverflow.com/questions/45655484/bcd-to-decimal-and-decimal-to-bcd?rq=3
-// https://stackoverflow.com/questions/28077671/algorithm-to-convert-a-string-of-decimal-digits-to-bcd
+/**
+ * A class that contains static methods to decode/encode BCD data as String and
+ * byte[] array.
+ * 
+ * @author marciocg
+ * @version v0.1.0
+ * @since 01/03/2024
+ */
 public final class BCDFormat {
-    public static void main(String[] args) throws IOException {
 
-        System.out.println(args[0] + " " + args[0].length() + " => Input");
-        FileOutputStream fout = new FileOutputStream("saida.bin");
-
-        var res = fromStringToBCDByteArray(args[0]);
-        fout.write(res);
-        fout.write((byte) 0x40);
-        var str = fromBCDByteArrayToString(res);
-
-        System.out.println(str + " " + str.length() + " => Output String e length() da String");
-        fout.write(str.getBytes());
-        // fout.write((byte) 0x40);
-        fout.close();
-    }
-
+    /**
+     * Takes a {@link String} with hexadecimal characters and formats (encodes) as a byte[] array.
+     * 
+     * @param arg Data as hexadecimal characters
+     * @return byte[] array of BCD encoded data
+     */
     public static byte[] fromStringToBCDByteArray(String arg) {
         int i = 0;
         int p = 0;
@@ -54,14 +48,20 @@ public final class BCDFormat {
             }
 
             res[p] = bcd;
-           
+
             i++;
-          
+
             p++;
         }
         return res;
     }
 
+    /**
+     * Takes a byte[] array with BCD encoded data and parses (decodes) into {@link String} with hexadecimal characters as US_ASCII.
+     * 
+     * @param arg a byte[] array of BCD encoded data
+     * @return {@link String} with hexadecimal characters as US_ASCII
+     */
     public static String fromBCDByteArrayToString(byte[] arg) {
         int j = 0;
         char c;
@@ -72,7 +72,7 @@ public final class BCDFormat {
             if (c >= 0 && c <= 9) {
                 c += 0x30;
             } else {
-                c += 0x57;     // 0x37 for uppercase
+                c += 0x57; // 0x37 for uppercase
             }
             sb.append(c);
 
@@ -88,5 +88,4 @@ public final class BCDFormat {
 
         return sb.toString();
     }
-
 }
