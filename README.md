@@ -16,7 +16,7 @@ git clone https://github.com/marciocg/BCDFormat.git
 ```
 * Generate the jar package with maven
 ```
-mvn package
+./mvnw package
 ```
 * Import the jar to your project
 
@@ -26,9 +26,9 @@ mvn package
 
 ## Documentation
 
-* Generate the maven site with javadoc under ./target/site directory
+* Generate the maven site with javadoc and JaCoCo report under ./target/site directory
 ```
-mvn site
+./mvnw clean jacoco:prepare-agent install jacoco:report site
 ```
 
 ## License
