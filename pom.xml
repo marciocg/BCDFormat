@@ -6,7 +6,7 @@
 
     <groupId>io.github.marciocg</groupId>
     <artifactId>BCDFormat</artifactId>
-    <version>0.3</version>
+    <version>0.4</version>
 
     <name>BCDFormat</name>
     <description>Simple library that parses BCD (Binary-coded decimal) as Strings, and vice-versa.</description>
@@ -52,6 +52,12 @@
             <artifactId>checkstyle</artifactId>
             <version>10.14.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.11</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -105,6 +111,25 @@
                         <configLocation>src/main/resources/google_checks.xml</configLocation>                   
                     </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>0.8.11</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>report</id>
+                            <phase>prepare-package</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
@@ -118,6 +143,18 @@
                     <stylesheetfile>${basedir}/src/main/javadoc/stylesheet.css</stylesheetfile>
                     <show>public</show>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.11</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
             </plugin>
         </plugins>
     </reporting>

@@ -23,4 +23,27 @@ public class BCDFormatTest
 
         assertEquals(input.toLowerCase(), decoded);
     }
+
+    /**
+     * Test with invalid hexadecimal character on String input, expects IllegalArgumentException
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void fromStringWithInvalidHexChar()
+    {
+        String input = "498455910123456789abcdefABCDEFa0eeccdd858fd9d0d1eaaecafebW";
+        byte [] result = fromStringToBCDByteArray(input);
+        String decoded = fromBCDByteArrayToString(result);
+    }
+
+        /**
+     * Test with odd amount of digits, expects ArrayIndexOutOfBoundsException
+     */
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void fromStringWithOddDigitsLength()
+    {
+        String input = "498455910123456789abcdefABCDEFa0eeccdd858fd9d0d1eaaecafeb";
+        byte [] result = fromStringToBCDByteArray(input);
+        String decoded = fromBCDByteArrayToString(result);
+    }
+
 }

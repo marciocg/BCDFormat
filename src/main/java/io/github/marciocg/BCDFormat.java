@@ -32,12 +32,12 @@ public final class BCDFormat {
      * @return byte[] array of BCD encoded data
      * @throws IllegalArgumentException for illegal hexadecimal characters on {@link String} argument passed
      */
-    public static byte[] fromStringToBCDByteArray(String arg) throws IllegalArgumentException {
+    public static byte[] fromStringToBCDByteArray(final String arg) throws IllegalArgumentException {
         int i = 0;
         int p = 0;
         byte bcd = 0;
-        byte[] arr = arg.getBytes();
-        byte[] res = new byte[arr.length / 2];
+        final byte[] arr = arg.getBytes();
+        final byte[] res = new byte[arr.length / 2];
 
         while (i < arr.length) {
 
@@ -78,10 +78,10 @@ public final class BCDFormat {
      * @param arg a byte[] array of BCD encoded data
      * @return {@link String} with hexadecimal characters as US_ASCII
      */
-    public static String fromBCDByteArrayToString(byte[] arg) {
+    public static String fromBCDByteArrayToString(final byte[] arg) {
         int j = 0;
         char c;
-        var sb = new StringBuilder();
+        final var sb = new StringBuilder();
         while (j < arg.length) {
 
             c = (char) ((arg[j] >>> 4) & 0x0f);
