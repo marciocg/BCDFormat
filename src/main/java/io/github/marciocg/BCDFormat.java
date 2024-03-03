@@ -20,7 +20,7 @@ package io.github.marciocg;
  * byte[] array.
  * 
  * @author marciocg
- * @version v0.1.0
+ * @version v0.3.0
  * @since 01/03/2024
  */
 public final class BCDFormat {
