@@ -24,8 +24,8 @@ public class BCDFormatTest {
     }
 
     /**
-     * Test with invalid hexadecimal character on second position of a pair from String input, expects IllegalArgumentException
-     * 
+     * Test with invalid hexadecimal character on second position of a pair from
+     * String input, expects IllegalArgumentException
      */
     @Test(expected = IllegalArgumentException.class)
     public void fromStringWithInvalidHexChar2() {
@@ -35,7 +35,8 @@ public class BCDFormatTest {
     }
 
     /**
-     * Test with invalid hexadecimal character on first position of a pair from String input, expects IllegalArgumentException
+     * Test with invalid hexadecimal character on first position of a pair from
+     * String input, expects IllegalArgumentException
      */
     @Test(expected = IllegalArgumentException.class)
     public void fromStringWithInvalidHexChar1() {
