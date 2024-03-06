@@ -96,7 +96,7 @@ public final class BCDFormat {
             if (c >= 0 && c <= 9) {
                 c += 0x30;
             } else {
-                c += 0x57;
+                c += 0x57; // 0x37 for uppercase
             }
             sb.append(c);
             j++;
