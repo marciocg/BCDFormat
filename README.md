@@ -39,3 +39,4 @@ This project is licensed under the Apache License 2.0 - see the LICENSE.md file 
 
 References:
 * [Binary-coded decimal - Wikipedia](https://en.wikipedia.org/wiki/Binary-coded_decimal)
+* [RFC 1700](https://www.rfc-editor.org/rfc/rfc1700)

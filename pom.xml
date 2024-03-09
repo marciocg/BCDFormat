@@ -6,7 +6,7 @@
 
     <groupId>io.github.marciocg</groupId>
     <artifactId>BCDFormat</artifactId>
-    <version>0.5</version>
+    <version>0.6</version>
 
     <name>BCDFormat</name>
     <description>Simple library that parses BCD (Binary-coded decimal) as Strings, and vice-versa.</description>

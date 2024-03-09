@@ -18,21 +18,45 @@ package io.github.marciocg;
 /**
  * A class that contains static methods to decode/encode BCD data as String and
  * byte[] array.
+ * When transmiting BCD over the wire the data should be in big-endian (network order)
+ * format, but this class doesn't enforces any rule on the "endianness" of the
+ * data.
  * 
  * @author marciocg
- * @version v0.5.0
+ * @version v0.6.0
  * @since 01/03/2024
  */
 public final class BCDFormat {
 
     /**
-     * Takes a {@link String} with hexadecimal characters and formats (encodes) as a byte[] array.
+     * Takes a {@link String} with hexadecimal characters and formats (encodes) as a
+     * byte[] array.
      * 
      * @param arg Data as hexadecimal characters
      * @return byte[] array of BCD encoded data
-     * @throws IllegalArgumentException for illegal hexadecimal characters on {@link String} argument passed
+     * @throws IllegalArgumentException for illegal hexadecimal characters on
+     *                                  {@link String} argument passed
+     * @throws ArrayIndexOutOfBoundsException if the length of {@link String} argument is odd
+     * @throws NumberFormatException if there are chars diferent than numeric digits on {@link String} argument
      */
-    public static byte[] fromStringToBCDByteArray(final String arg) throws IllegalArgumentException, ArrayIndexOutOfBoundsException {
+    public static byte[] fromStringToBCDByteArray(final String arg)
+            throws IllegalArgumentException, ArrayIndexOutOfBoundsException, NumberFormatException {
+        
+        for (int p=0; p < arg.length(); p++) { 
+            if (arg.charAt(p) != '0' 
+            &&  arg.charAt(p) != '1' 
+            &&  arg.charAt(p) != '2' 
+            &&  arg.charAt(p) != '3' 
+            &&  arg.charAt(p) != '4' 
+            &&  arg.charAt(p) != '5' 
+            &&  arg.charAt(p) != '6' 
+            &&  arg.charAt(p) != '7' 
+            &&  arg.charAt(p) != '8' 
+            &&  arg.charAt(p) != '9') {
+                throw new NumberFormatException("Invalid digit at offset " + p);
+            };
+        }
+
         int i = 0;
         int p = 0;
         byte bcd = 0;
@@ -73,7 +97,8 @@ public final class BCDFormat {
     }
 
     /**
-     * Takes a byte[] array with BCD encoded data and parses (decodes) into {@link String} with hexadecimal characters as US_ASCII.
+     * Takes a byte[] array with BCD encoded data and parses (decodes) into
+     * {@link String} with hexadecimal characters as US_ASCII.
      * 
      * @param arg a byte[] array of BCD encoded data
      * @return {@link String} with hexadecimal characters as US_ASCII
